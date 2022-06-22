@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-  $page_title = "500";
+  $page_title = "Server Error";
   require dirname(__DIR__) . '/Templates/header.php';
 ?>
 <body>

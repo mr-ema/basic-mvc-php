@@ -46,11 +46,21 @@ class Error
         http_response_code($code);
 
         if (CONFIG::SHOW_ERRORS) {
+            echo "<head>";
+            echo "<link rel='stylesheet' type='text/css' href='css/main.css'>";
+            echo "<link rel='stylesheet' type='text/css' href='css/utilities.css'>";
+            echo "</head";
+            echo "<body>";
+            echo "<div class='dev-error'>";
+            echo "<div>";
             echo "<h1>Fatal error</h1>";
-            echo "<p>Uncaught exception: '" . get_class($exception) . "'</p>";
-            echo "<p>Message: '" . $exception->getMessage() . "'</p>";
-            echo "<p>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></p>";
-            echo "<p>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</p>";
+            echo "<span>Uncaught exception: '" . get_class($exception) . "'</span>";
+            echo "<span>Message: '" . $exception->getMessage() . "'</span>";
+            echo "<span>Stack trace:<pre>" . $exception->getTraceAsString() . "</pre></span>";
+            echo "<span>Thrown in '" . $exception->getFile() . "' on line " . $exception->getLine() . "</span>";
+            echo "</div>";
+            echo "</div>";
+            echo "</body>";
         } else {
             $log = dirname(__DIR__) . '/logs/' . date('Y-m-d') . '.txt';
             ini_set('error_log', $log);

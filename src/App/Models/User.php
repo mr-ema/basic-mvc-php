@@ -9,24 +9,29 @@ class User extends Model  {
    * * Get all users from database
    */
   public static function getAll(): void {
-    $db = parent::getDB();
-    $query = $db -> query('SELECT * FROM users');
-
-    $users = $query -> fetchAll(\PDO::FETCH_ASSOC);
-
-    if ($users) {
-      // output data of each user
-      foreach($users as $user) {
-        echo "
-          <span> {$user['id']} </span>
-          <span> {$user['firstname']} </span>
-          <span> {$user['lastname']} </span>
-          <span> {$user['email']} </span>
-        ";
+    try {
+      $db = parent::getDB();
+      $query = $db -> query('SELECT * FROM users');
+  
+      $users = $query -> fetchAll(\PDO::FETCH_ASSOC);
+  
+      if ($users) {
+        // output data of each user
+        foreach($users as $user) {
+          echo "
+            <span> {$user['id']} </span>
+            <span> {$user['firstname']} </span>
+            <span> {$user['lastname']} </span>
+            <span> {$user['email']} </span>
+          ";
+        }
+      } else {
+        echo "0 results";
       }
-    } else {
-      echo "0 results";
+    }catch(\Exception $e) {
+      echo $e -> getMessage();
     }
+    
     
   }
 

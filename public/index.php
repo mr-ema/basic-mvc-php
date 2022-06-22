@@ -7,6 +7,9 @@ require dirname(__DIR__) . '/vendor/autoload.php';
 /**
  * Error and Exception handling
  */
+error_reporting(E_ALL);
+set_error_handler('Core\Error::errorHandler');
+set_exception_handler('Core\Error::exceptionHandler');
 
 /**
  * * Demo Router
@@ -18,4 +21,5 @@ $router = new Core\Router();
 $router -> get('/', 'Home');
 $router -> get('/about', 'About');
 
-$router -> render($_SERVER['REQUEST_URI']);
+$router -> render( htmlspecialchars($_SERVER["REQUEST_URI"]) );
+

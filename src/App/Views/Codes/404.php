@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <?php 
-  $page_title = "404";
+  $page_title = "Not Found";
   require dirname(__DIR__) . '/Templates/header.php';
 ?>
 <body>
