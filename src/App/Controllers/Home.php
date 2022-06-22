@@ -14,6 +14,6 @@ class Home extends Controller {
 
   // Show index page
   public function indexAction(): void {
-      View::render('index.php');
+      View::render('test.php');
   }
 }

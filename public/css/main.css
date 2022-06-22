@@ -73,3 +73,25 @@ header  {
 .navBar a:hover {
   color: #fff;
 }
+
+.code-page  {
+  grid-column: 1/13;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+
+  height: 100vh;
+}
+
+.code-page h1 {
+  font-size: 10vw;
+  color: #ddd;
+}
+
+.code-page span  {
+  font-size: 2vw;
+  font-weight: bold;
+  color: #bbb;
+}

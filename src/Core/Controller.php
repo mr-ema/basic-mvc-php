@@ -19,18 +19,18 @@ abstract class Controller {
    * 
    * @return void
    */
-  public function __construct(array $route_params) 
+ /*  public function __construct(array $route_params) 
   {
     $this -> route_params = $route_params;
   }
-
+ */
   /**
    * Magic method, called when a inaccessible or no-exitent method
    * is called on an object of this class.
    */
   public function __call(string $name, array $args) : void
   {
-    $method = $name;
+    $method = $name . 'Action';
 
     if (method_exists( $this, $method )) {
       if ($this -> before()) {

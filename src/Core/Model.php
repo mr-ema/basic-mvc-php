@@ -25,7 +25,7 @@ abstract class Model  {
         $db -> setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
       }
     }catch(\Exception $e)  {
-      echo "Database error: $e";
+      echo $e -> getMessage();
     }
 
     return $db;

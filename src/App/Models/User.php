@@ -55,7 +55,7 @@ class User extends Model  {
       $db->exec($query);
     
     }catch(\Exception $e)  {
-      echo $e;
+      echo $e -> getMessage();
     }
    
   }
