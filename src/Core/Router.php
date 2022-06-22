@@ -54,9 +54,9 @@ class Router  {
    * * Add Valid Routes
    * Check IF the route is a valid route and add to $routes array
    * Otherwise return an Exepcion
-   * @return mixed  
+   * @return void  
   */
-  private function route(string $route, string $controller): mixed {
+  private function route(string $route, string $controller): void {
     try {
       $nameSpace = 'App\Controllers\\'. $controller;
 
@@ -79,16 +79,21 @@ class Router  {
     $routes = $this -> routes;
     $nameSpace = 'App\Controllers\\';
     $url = $this -> sanitize($url);
-    
+    $exist = false;
+ 
     foreach($routes as $route)  {
       if (array_key_exists($url, $route)) {
-        $nameSpace = $nameSpace.$route[$url];
-
-        $render = new $nameSpace;
-        return $render -> indexAction();
-      }else {
-        throw new \Exception("No found", 404);
+        $exist = true;
+        $nameSpace = $nameSpace.$route["$url"];
+        break;
       }
+    }
+
+    if ($exist) {
+      $render = new $nameSpace;
+      return $render -> indexAction();
+    }else {
+      throw new \Exception("Not Found", 404);
     }
   }
 }
