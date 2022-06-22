@@ -14,5 +14,9 @@ composer install
 ```
 
 ```bash
-sudo php -S localhost:3000 -t public
+mysql -u root -h localhost
+```
+
+```bash
+php -S localhost:3000 -t public -f public/index.php
 ```
