@@ -28,11 +28,7 @@
       <button class="button w-50 self-center" type="submit">Send</button>
     </form>
 
-    <?php 
-      if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        \App\Models\User::newUser($_POST['firstName'], $_POST['lastName'], $_POST['mail']);
-      }
-    ?>
+  
 
     <div class="flex g-2 w-50 text-center f-column">
       <div class="table table-titles">
@@ -42,7 +38,20 @@
         <span>Email</span>
       </div>
       <div class="table">
-        <?php \App\Models\User::getAll();?>
+      <?php 
+      if  ($data['users'])  {
+        // output data of each user
+        foreach($data['users'] as $user) {
+          echo "
+            <span> {$user['id']} </span>
+            <span> {$user['firstname']} </span>
+            <span> {$user['lastname']} </span>
+            <span> {$user['email']} </span>
+          ";
+        }
+      }else echo "<span>No Results</span>"
+        
+      ?>
       </div>
     </div>
     </main>

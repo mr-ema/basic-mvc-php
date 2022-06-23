@@ -15,7 +15,7 @@ abstract class Model  {
 
   // * Get PDO database connection
   protected static function getDB(): mixed {
-    static $db = NULL;
+    $db = NULL;
 
     try {
       if ($db === NULL) {

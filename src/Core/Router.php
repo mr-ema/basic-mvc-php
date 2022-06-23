@@ -73,7 +73,7 @@ class Router  {
   /**
    * * Return the controller to render the page
    * * IF the request is a valid url on $routes
-   * * This is not the best way to do it, I'm doing research to come with a best method
+   * * This is not the best way to do it, I'm doing research to come with a better method
    */
   public function render($url) {
     $routes = $this -> routes;

@@ -8,22 +8,28 @@ namespace Core;
  */
 
 abstract class Controller {
-  /**
-   * * Parameters from the matched route
-   * @var array
-   */
-  protected $route_params = [];
 
   /**
-   * * Class constructor
-   * 
-   * @return void
+   * * Get Model Class From App\Models
    */
- /*  public function __construct(array $route_params) 
-  {
-    $this -> route_params = $route_params;
+
+  protected function model($model): mixed {
+    $nameSpace = 'App\Models\\' . $model;
+    try {
+      if (class_exists($nameSpace)) {
+
+        $model = new $nameSpace;
+        return $model;
+
+      }else {
+        throw new \Exception("This Model Not Exist");
+      }
+    
+    }catch(\Exception $e) {
+      echo $e -> getMessage();
+    }
+    
   }
- */
   /**
    * Magic method, called when a inaccessible or no-exitent method
    * is called on an object of this class.

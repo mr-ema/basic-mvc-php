@@ -9,8 +9,8 @@ class View  {
    * @param array $args // * Associative array of data to display in the view (optional)
    */
 
-   public static function render(string $view, array $args = []): void {
-    extract($args, EXTR_SKIP);
+   public static function render(string $view, array $data = []): void {
+    extract($data, EXTR_SKIP);
 
     // * rute relative to core directory /src in this case
     $file = dirname(__DIR__) . "/App/Views/$view";

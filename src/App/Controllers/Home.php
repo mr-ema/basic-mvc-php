@@ -14,6 +14,9 @@ class Home extends Controller {
 
   // Show index page
   public function indexAction(): void {
-      View::render('test.php');
+    $userModel = $this -> model('User');
+    $users = $userModel::getAll();
+
+    View::render('test.php', ['users' => $users]);
   }
 }
