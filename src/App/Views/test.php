@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" type="text/css" href="css/main.css">
-  <link rel="stylesheet" type="text/css" href="css/utilities.css">
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <link rel="stylesheet" type="text/css" href="/css/utilities.css">
   <title>Test View</title>
 </head>
 <body>
@@ -27,8 +27,6 @@
       </label>
       <button class="button w-50 self-center" type="submit">Send</button>
     </form>
-
-  
 
     <div class="flex g-2 w-50 text-center f-column">
       <div class="table table-titles">

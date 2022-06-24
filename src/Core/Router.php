@@ -11,6 +11,7 @@ namespace Core;
 
 class Router  {
   protected $routes = [];
+  protected $params = [];
 
   // * Valid request methods
   private const METHODS = [
@@ -20,10 +21,8 @@ class Router  {
     'delete' => 'route'
   ];
 
-  /**
-   * * Validate URL
-   */
-  protected function sanitize(string $requestUrl): string {
+  // * Validate URL
+  protected function sanitizeUrl(string $requestUrl): string {
     if ($requestUrl === '/')  return $requestUrl;
 
     $requestUrl = filter_var($requestUrl, FILTER_SANITIZE_URL);
@@ -32,6 +31,9 @@ class Router  {
   
     return $requestUrl;
   }
+
+  // sanitize query 
+  protected function sanitizeQuery(array $query)  {}
 
   /**
    * * MAGIC METHOD
@@ -54,7 +56,7 @@ class Router  {
    * * Add Valid Routes
    * Check IF the route is a valid route and add to $routes array
    * Otherwise return an Exepcion
-   * @return void  
+   * @return void
   */
   private function route(string $route, string $controller): void {
     try {
@@ -72,13 +74,16 @@ class Router  {
 
   /**
    * * Return the controller to render the page
-   * * IF the request is a valid url on $routes
-   * * This is not the best way to do it, I'm doing research to come with a better method
+   * * For the moment just can render the page
+   * * Soon I'll add methods to handler others requests
+   * * Like POST or GET, filter data with Url queries
+   * IF the request is a valid url on $routes
+   * This is not the best way to do it, I'm doing research to come with a better method
    */
   public function render($url) {
     $routes = $this -> routes;
     $nameSpace = 'App\Controllers\\';
-    $url = $this -> sanitize($url);
+    $url = $this -> sanitizeUrl($url);
     $exist = false;
  
     foreach($routes as $route)  {
